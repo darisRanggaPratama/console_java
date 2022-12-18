@@ -1,0 +1,5 @@
+#Informasi Pribadi
+#Sun Dec 18 01:58:39 WIB 2022
+umur=28
+nama=Ifa
+pekerjaan=UI/UX

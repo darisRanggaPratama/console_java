@@ -1,0 +1,9 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ò©Ýº
+`
+java:S2095?"EUse try-with-resources or close this "Scanner" in a "finally" clause.(Èñ¾„ýÿÿÿÿ
+S	java:S106'"9Replace this use of System.out or System.err by a logger.(†ïÉ†ÿÿÿÿÿ
+E
+java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+S	java:S106D"9Replace this use of System.out or System.err by a logger.(ñ—¸½úÿÿÿÿ
+P	java:S125J"<This block of commented-out lines of code should be removed.(Ô±ß

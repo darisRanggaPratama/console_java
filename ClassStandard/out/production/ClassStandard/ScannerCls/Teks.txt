@@ -1,0 +1,5 @@
+In this example,
+we create a File object that represents the file we want to read,
+then we create a Scanner object that reads from that file.
+We use a while loop to read each line of the file and print it to the screen.
+Finally, we close the file using the close() method.

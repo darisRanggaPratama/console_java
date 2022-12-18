@@ -1,0 +1,5 @@
+#Informasi Pribadi
+#Sun Dec 18 07:16:07 WIB 2022
+umur=40
+nama=Tika
+pekerjaan=UI/UX
