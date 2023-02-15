@@ -3,6 +3,7 @@ package ArrayBsc;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class ArrayStream {
     // Ciptakan Array
@@ -17,13 +18,23 @@ class ArrayStream {
         // Set array value
         setIntegerArrayValue(0, 1000);
         setStringArrayValue();
+
         // Get data kurang dari nilai tertentu
         getLessThan(500);
+        // Get nilai tertentu dan ganjil
+        getNumberOverAndOdd(500);
         // Get nilai tertentu
         getNumberValue(10);
 
         // Get value dengan jumlah kata tertentu
         getMoreWords(3);
+        // Get huruf pertama
+        getFirstLetter("e");
+        // Get Kata
+        getWord("al");
+        // Get Kata terakhir
+        getLastWord("ackerman");
+
 
 
     }
@@ -31,7 +42,7 @@ class ArrayStream {
     private static void setStringArrayValue() {
         words[0] = "raden rangga pratama";
         words[1] = "haifa azzura";
-        words[2] = "Muhammad Nizham Al Islam";
+        words[2] = "muhammad nizham al Islam";
         words[3] = "antika";
         words[4] = "armin";
         words[5] = "eren yeager";
@@ -45,11 +56,21 @@ class ArrayStream {
     private static void showFullStringArray() {
         // Sort: Ascending. Dengan stream
         String[] ascending = Arrays.stream(words)
-                .sorted()
-                .toArray(String[]::new);
+                                    .sorted()
+                                    .toArray(String[]::new);
 
-        System.out.println("\nTampilkan seluruh nama: ");
+        System.out.println("\nTampilkan seluruh nama(Ascending): ");
         for (String name : ascending) {
+            System.out.println(name);
+        }
+
+        // Sort: Descending. Dengan stream
+        String[] descending = Arrays.stream(words)
+                                    .sorted((x, y) -> y.compareTo(x))
+                                    .toArray(String[]::new);
+
+        System.out.println("\nTampilkan seluruh nama(Descending): ");
+        for (String name : descending) {
             System.out.println(name);
         }
     }
@@ -59,12 +80,39 @@ class ArrayStream {
         // Get nama dengan suku kata tertentu
         System.out.println("\nNama dengan jumlah suku kata: " + value);
         String[] getMoreWords = Arrays.stream(words)
-                .filter(x -> x.split(" ").length == value)
-                .toArray(String[]::new);
+                                        .filter(x -> x.split(" ").length == value)
+                                        .toArray(String[]::new);
 
         for (String words : getMoreWords) {
             System.out.println(words);
         }
+    }
+
+    private static void getFirstLetter(String value){
+        String[] firstLetter = Arrays.stream(words)
+                                    .filter(x -> x.startsWith("e"))
+                                    .toArray(String[]::new);
+
+        System.out.println("\nKata diawali huruf: " + value);
+        for (String word : firstLetter) {
+            System.out.println(word);
+        }
+    }
+
+    private static void getWord(String value){
+        Stream<String> getWordStream = Arrays.stream(words)
+                                            .filter(str -> str.contains(value));
+
+        System.out.println("\nKata: " + value + " ditemukan: ");
+
+        getWordStream.forEach(System.out::println);
+    }
+
+    private static void getLastWord(String value){
+        Stream<String> lastWordStream = Arrays.stream(words)
+                                                .filter(str -> str.endsWith("ackerman"));
+        System.out.println("\nSuku kata terakhir ditemukan: " +  value);
+        lastWordStream.forEach(System.out::println);
     }
 
     private static void setIntegerArrayValue(int first, int last) {
@@ -75,13 +123,13 @@ class ArrayStream {
 
     // Display full array item
     private static void showFullIntegerArray() {
-        System.out.println("\nSemua elemen array: ");
+        System.out.println("\n\nSemua elemen array: ");
         // Sort: Ascending
         Arrays.sort(numbers);
         // Sort: Descending
         int[] descendingArray = IntStream.range(0, numbers.length)
-                .map(i -> numbers[numbers.length - i - 1])
-                .toArray();
+                                            .map(i -> numbers[numbers.length - i - 1])
+                                            .toArray();
         for (int number : descendingArray) {
             System.out.print(number + " ");
         }
@@ -91,8 +139,8 @@ class ArrayStream {
         showFullIntegerArray();
 
         int[] lessThan = IntStream.of(numbers)
-                .filter(x -> x < value)
-                .toArray();
+                                    .filter(x -> x < value)
+                                    .toArray();
 
         System.out.println("\n\nAmbil elemen array kurang dari: " + value);
 
@@ -101,10 +149,23 @@ class ArrayStream {
         }
     }
 
+    private static void getNumberOverAndOdd(int value){
+       showFullIntegerArray();
+
+        System.out.println("\n\nElemen array bernilai ganjil & lebih dari: " + value);
+       int[] overAndOdd = Arrays.stream(numbers)
+               .filter(n -> n > value && n % 2 != 0)
+               .toArray();
+
+       for(int number : overAndOdd){
+           System.out.print(number + " ");
+       }
+    }
+
     private static void getNumberValue(int value) {
         int[] getNumber = IntStream.of(numbers)
-                .filter(x -> x == value)
-                .toArray();
+                                    .filter(x -> x == value)
+                                    .toArray();
 
         if (getNumber.length > 0) {
             System.out.println("\n\nNilai array: " + getNumber[0] + " ditemukan");
