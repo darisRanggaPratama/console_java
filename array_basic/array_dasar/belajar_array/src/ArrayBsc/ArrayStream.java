@@ -16,13 +16,13 @@ class ArrayStream {
 
     public static void main(String[] args) {
         // Set array value
-        setIntegerArrayValue(0, 1000);
+        setIntegerArrayValue(0, 15);
         setStringArrayValue();
 
         // Get data kurang dari nilai tertentu
-        getLessThan(500);
+        getLessThan(5);
         // Get nilai tertentu dan ganjil
-        getNumberOverAndOdd(500);
+        getNumberOverAndOdd(5);
         // Get nilai tertentu
         getNumberValue(10);
 
@@ -34,9 +34,6 @@ class ArrayStream {
         getWord("al");
         // Get Kata terakhir
         getLastWord("ackerman");
-
-
-
     }
 
     private static void setStringArrayValue() {
@@ -154,8 +151,8 @@ class ArrayStream {
 
         System.out.println("\n\nElemen array bernilai ganjil & lebih dari: " + value);
        int[] overAndOdd = Arrays.stream(numbers)
-               .filter(n -> n > value && n % 2 != 0)
-               .toArray();
+                               .filter(n -> n > value && n % 2 != 0)
+                               .toArray();
 
        for(int number : overAndOdd){
            System.out.print(number + " ");
@@ -201,8 +198,5 @@ class ArrayStream {
  * 4. Mengambil elemen array yang bernilai 10 bila ada.
  * a. Melakukan operasi filtering menggunakan method filter() untuk menyaring elemen yang nilainya sama dengan 10.
  * b. Tampilkan pesan bila ditemukan
-
-
-
 
  * */
