@@ -16,7 +16,7 @@ class ArrayStream {
 
     public static void main(String[] args) {
         // Set array value
-        setIntegerArrayValue(0, 1000);
+        setIntegerArrayValue(0, 15);
         setStringArrayValue();
 
         // Get data kurang dari nilai tertentu
@@ -27,7 +27,7 @@ class ArrayStream {
         getNumberValue(10);
 
         // Get value dengan jumlah kata tertentu
-        getMoreWords(3);
+        getMoreWords(2);
         // Get huruf pertama
         getFirstLetter("e");
         // Get Kata
@@ -49,8 +49,8 @@ class ArrayStream {
         Arrays.sort(numbers);
         // Sort: Descending
         int[] descendingArray = IntStream.range(0, numbers.length)
-                                            .map(i -> numbers[numbers.length - i - 1])
-                                            .toArray();
+                .map(i -> numbers[numbers.length - i - 1])
+                .toArray();
         for (int number : descendingArray) {
             System.out.print(number + " ");
         }
@@ -60,8 +60,8 @@ class ArrayStream {
         showFullIntegerArray();
 
         int[] lessThan = IntStream.of(numbers)
-                                    .filter(x -> x < value)
-                                    .toArray();
+                .filter(x -> x < value)
+                .toArray();
 
         System.out.println("\n\nAmbil elemen array kurang dari: " + value);
 
@@ -70,23 +70,23 @@ class ArrayStream {
         }
     }
 
-    private static void getNumberOverAndOdd(int value){
-       showFullIntegerArray();
+    private static void getNumberOverAndOdd(int value) {
+        showFullIntegerArray();
 
         System.out.println("\n\nElemen array bernilai ganjil & lebih dari: " + value);
-       int[] overAndOdd = Arrays.stream(numbers)
-                               .filter(n -> n > value && n % 2 != 0)
-                               .toArray();
+        int[] overAndOdd = Arrays.stream(numbers)
+                .filter(n -> n > value && n % 2 != 0)
+                .toArray();
 
-       for(int number : overAndOdd){
-           System.out.print(number + " ");
-       }
+        for (int number : overAndOdd) {
+            System.out.print(number + " ");
+        }
     }
 
     private static void getNumberValue(int value) {
         int[] getNumber = IntStream.of(numbers)
-                                    .filter(x -> x == value)
-                                    .toArray();
+                .filter(x -> x == value)
+                .toArray();
 
         if (getNumber.length > 0) {
             System.out.println("\n\nNilai array: " + getNumber[0] + " ditemukan");
@@ -136,15 +136,15 @@ class ArrayStream {
         // Get nama dengan suku kata tertentu
         System.out.println("\nNama dengan jumlah suku kata: " + value);
         String[] getMoreWords = Arrays.stream(words)
-                                    .filter(x -> x.split(" ").length == value)
-                                    .toArray(String[]::new);
+                .filter(x -> x.split(" ").length == value)
+                .toArray(String[]::new);
 
         for (String words : getMoreWords) {
             System.out.println(words);
         }
     }
 
-    private static void getFirstLetter(String value){
+    private static void getFirstLetter(String value) {
         String[] firstLetter = Arrays.stream(words)
                 .filter(x -> x.startsWith("e"))
                 .toArray(String[]::new);
@@ -155,7 +155,7 @@ class ArrayStream {
         }
     }
 
-    private static void getWord(String value){
+    private static void getWord(String value) {
         Stream<String> getWordStream = Arrays.stream(words)
                 .filter(str -> str.contains(value));
 
@@ -164,49 +164,61 @@ class ArrayStream {
         getWordStream.forEach(System.out::println);
     }
 
-    private static void getLastWord(String value){
+    private static void getLastWord(String value) {
         Stream<String> lastWordStream = Arrays.stream(words)
                 .filter(str -> str.endsWith("ackerman"));
-        System.out.println("\nSuku kata terakhir ditemukan: " +  value);
+        System.out.println("\nSuku kata terakhir ditemukan: " + value);
         lastWordStream.forEach(System.out::println);
     }
 }
 /*
- * Penjelasan algoritma di atas:
+1. setIntegerArrayValue(int first, int last)
+a. Memasukkan elemen-elemen array yang berasal dari nilai random yang ditentukan dari variable first dan last
 
- * setIntegerArrayValue(int first, int last)
- * 1. Membuat array dengan kapasitas 10 dan mengisi dengan nilai random antara 0 sampai 1000.
- * a. Melakukan impor package java.util.Random untuk dapat menggunakan kelas Random yang dibutuhkan untuk menghasilkan nilai acak.
- * b. Membuat array numbers dengan kapasitas 10.
- * c. Membuat objek random dari kelas Random.
- * d. Melakukan perulangan sebanyak panjang array numbers, dimana setiap elemen diisi dengan nilai acak antara 0 sampai 1000 menggunakan method nextInt() dari objek random.
- *
- * showFullIntegerArray()
- * 2. Mengurutkan semua nilai elemen array secara descending.
- * a. Melakukan impor package java.util.Arrays untuk dapat menggunakan method sort() yang berguna untuk mengurutkan array secara ascending.
- * b. Melakukan pengurutan array numbers menggunakan method sort() dari kelas Arrays.
- * c. Membuat array baru descendingArray dengan panjang yang sama dengan array numbers.
- * d. Menggunakan stream IntStream untuk membuat index yang akan digunakan untuk mengakses elemen array numbers secara terbalik (descending. terbesar ke terkecil).
- * e. Mengisi setiap elemen pada descendingArray dengan elemen pada array numbers yang diakses secara terbalik menggunakan index yang dibuat pada stream.
- * f. Menampilkan hasilnya dengan foreach
- *
- * getLessThan(int value)
- * 3. Mengambil elemen array yang bernilai kurang dari 500 menggunakan stream.
- * a. Menggunakan method of() dari kelas IntStream untuk membuat stream dari array descendingArray.
- * b. Melakukan operasi filtering menggunakan method filter() untuk menyaring elemen yang nilainya kurang dari 500.
- * c. Mengkonversi stream kembali ke array menggunakan method toArray()
- * d. Menampilkan hasilnya dengan perulangan foreach
- *
- * getNumberValue(int value)
- * 4. Mengambil elemen array yang bernilai 10 bila ada.
- * a. Melakukan operasi filtering menggunakan method filter() untuk menyaring elemen yang nilainya sama dengan 10.
- * b. Tampilkan pesan bila ditemukan
- *
- * getNumberOverAndOdd(int value)
- * 5. Mengambil elemen array yang benilai lebih dari 500 dan bernilai ganjil
- * a. Memanggil method showFullIntegerArray() untuk menampilkan semua elemen array
- * b. Menggunakan method Arrays.stream() untuk membuat stream dari array, lalu kita gunakan method filter() untuk menyaring elemen array yang memenuhi kondisi yang diberikan, yaitu nilai lebih dari 500 dan bernilai ganjil. Mengkonversi stream kembali ke array menggunakan method toArray().
- * c. Memunculkan hasilnya menggunakan perualangan foreach.
- *
- *
- * */
+2. showFullIntegerArray()
+a. Mengurutkan semua elemen array secara ascending
+b. Membalikkan pengurutan menjadi descending
+c. Menampilkan hasilnya dengan perulangan (loop: for)
+
+3. getLessThan(int value)
+a. Memanggil method showFullIntegerArray()
+b. Mengambil elemen array yang di bawah nilai tertentu menggunakan stream
+c. Menampilkan hasilnya dengan perulangan (loop: for)
+
+4. getNumberOverAndOdd(int value)
+a. Memanggil method showFullIntegerArray()
+b. Mengambil elemen array yang di atas nilai tertentu dan bernilai ganjil (nilai yang bila habis dibagi 2 sisanya tidak 0)
+c. Menampilkan hasilnya dengan perulangan (loop: for)
+
+5. getNumberValue(int value)
+a. Mengambil elemen array dengan kriteria value tertentu
+b. Jika ditemukan tampilkan pesan. Dan jika tidak ada menampilkan pesan tidak ditemukan
+
+6. setStringArrayValue()
+a. Mengisi array dengan bebera elemen string dimana kapasitas array 11 elemen.
+
+7. getMoreWords(int value)
+a. Mengurutkan semua elemen array secara menanjak (ascending) menggunakan stream
+b. Menampilkan hasilnya dengan perulangan (loop: for)
+c. Mengurutkan semua elemen array secara terbalik (descending)
+d. Menampilkan hasilnya dengan perulangan (loop: for)
+
+8. getMoreWords(int value)
+a. Memanggil method getMoreWords(int value)
+b. Memecah 1 kata menjadi beberapa suku kata menggunakan stream
+c. Menampung hasilnya dalam variable getMoreWords
+d. Menampilkan hasilnya melalui perulangan (loop: for)
+
+9. getFirstLetter(String value)
+a. Mengambil kata yang memiliki awalan huruf tertentu
+b. Menampung hasilnya di variable firstLetter
+c. Menampilkan hasilnya menggunakan perulangan (loop: for)
+
+10. getWord(String value)
+a. Mengambil elemen array yang memiliki nilai tertentu
+b. Menampilkan hasilnya
+
+11. getLastWord(String value)
+a. Mengambil elemen array yang memili suku kata terakhir tertentu
+c. Menampilkan hasilnya bila ditemukan
+*/
