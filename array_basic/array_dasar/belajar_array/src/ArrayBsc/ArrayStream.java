@@ -197,14 +197,14 @@ b. Jika ditemukan tampilkan pesan. Dan jika tidak ada menampilkan pesan tidak di
 6. setStringArrayValue()
 a. Mengisi array dengan bebera elemen string dimana kapasitas array 11 elemen.
 
-7. getMoreWords(int value)
+7. ShowFullStringArray(int value)
 a. Mengurutkan semua elemen array secara menanjak (ascending) menggunakan stream
 b. Menampilkan hasilnya dengan perulangan (loop: for)
 c. Mengurutkan semua elemen array secara terbalik (descending)
 d. Menampilkan hasilnya dengan perulangan (loop: for)
 
 8. getMoreWords(int value)
-a. Memanggil method getMoreWords(int value)
+a. Memanggil method showFullStringArray()
 b. Memecah 1 kata menjadi beberapa suku kata menggunakan stream
 c. Menampung hasilnya dalam variable getMoreWords
 d. Menampilkan hasilnya melalui perulangan (loop: for)
