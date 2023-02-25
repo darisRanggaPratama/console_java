@@ -21,6 +21,7 @@ public class Main {
 
     }
 
+    // Method tanpa parameter dan tanpa kembalian (return)
     private static void luasPersegiPanjang() {
         double panjang = 9.0;
         double lebar = 8.0;
@@ -28,11 +29,14 @@ public class Main {
         System.out.println("\nLuas Persegi Panjang:\nPanjang: " + panjang + " x Lebar: " + lebar + " = " + luas);
     }
 
+    // Method tanpa parameter tapi memiliki return
     private static String volumeKubus() {
         double sisi = 9.0;
         double volume = sisi * sisi * sisi;
         return "\nVolume Kubus. " + sisi + "^3 = " + volume;
     }
+
+    // Method dengan parameter dan return
 
     private static Double VolumeBalok(Double panjang, Double lebar, Double tinggi) {
         double volume = panjang * lebar * tinggi;
@@ -40,11 +44,13 @@ public class Main {
         return volume;
     }
 
+    // Method dengan parameter tapi tanpa return
     private static void luasPersegi(Double sisi) {
         double luas = sisi * sisi;
         System.out.println("\nLuas Persegi:\n Sisi: " + sisi + "^2 = " + luas);
     }
 
+    // Method Overloading
     private static String persegiPanjang(int panjang, int lebar)
     {
         int persegiPanjang = panjang * lebar;
