@@ -1,17 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(æáÈ³
-X
-java:S1659"BDeclare "lebar" and all following declarations on a separate line.(÷îæ…
-j
-java:S1450"TRemove the "lebar" field and declare it as a local variable in the relevant methods.(÷îæ…
-l
-java:S1450"VRemove the "panjang" field and declare it as a local variable in the relevant methods.(÷îæ…
-i
-java:S1450"SRemove the "sisi" field and declare it as a local variable in the relevant methods.(÷îæ…
-S	java:S106
-"9Replace this use of System.out or System.err by a logger.(ô¬€…ýÿÿÿÿ
-N	java:S106"9Replace this use of System.out or System.err by a logger.(Ï†£Ë
-N	java:S106"9Replace this use of System.out or System.err by a logger.(èÊç”
-h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â³óþÿÿÿÿÿ
-M	java:S106 "9Replace this use of System.out or System.err by a logger.(‰Ðêt
-N	java:S106&"9Replace this use of System.out or System.err by a logger.(ÏŽ  
