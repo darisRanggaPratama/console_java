@@ -29,6 +29,11 @@ public class TestOpen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnShowMessage = new javax.swing.JButton();
         btnVolume = new javax.swing.JButton();
+        btnVolTabung = new javax.swing.JButton();
+        btnCek = new javax.swing.JButton();
+        btnGender = new javax.swing.JButton();
+        btnTravel = new javax.swing.JButton();
+        btnGrade = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OpenForm");
@@ -63,17 +68,72 @@ public class TestOpen extends javax.swing.JFrame {
             }
         });
 
+        btnVolTabung.setBackground(new java.awt.Color(255, 204, 204));
+        btnVolTabung.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnVolTabung.setForeground(new java.awt.Color(255, 51, 51));
+        btnVolTabung.setText("VOLUME Tabung");
+        btnVolTabung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolTabungActionPerformed(evt);
+            }
+        });
+
+        btnCek.setBackground(new java.awt.Color(255, 204, 204));
+        btnCek.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnCek.setForeground(new java.awt.Color(255, 51, 51));
+        btnCek.setText("Tiket Bioskop");
+        btnCek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekActionPerformed(evt);
+            }
+        });
+
+        btnGender.setBackground(new java.awt.Color(255, 204, 204));
+        btnGender.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnGender.setForeground(new java.awt.Color(255, 51, 51));
+        btnGender.setText("Check Gender");
+        btnGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenderActionPerformed(evt);
+            }
+        });
+
+        btnTravel.setBackground(new java.awt.Color(255, 204, 204));
+        btnTravel.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnTravel.setForeground(new java.awt.Color(255, 51, 51));
+        btnTravel.setText("Check Client");
+        btnTravel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTravelActionPerformed(evt);
+            }
+        });
+
+        btnGrade.setBackground(new java.awt.Color(255, 204, 204));
+        btnGrade.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnGrade.setForeground(new java.awt.Color(255, 51, 51));
+        btnGrade.setText("Grade Rumah");
+        btnGrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGradeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVolume)
-                    .addComponent(btnShowMessage)
-                    .addComponent(jButton1))
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTravel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVolTabung, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnShowMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCek, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnGrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +144,17 @@ public class TestOpen extends javax.swing.JFrame {
                 .addComponent(btnShowMessage)
                 .addGap(18, 18, 18)
                 .addComponent(btnVolume)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnVolTabung)
+                .addGap(18, 18, 18)
+                .addComponent(btnCek)
+                .addGap(18, 18, 18)
+                .addComponent(btnGender)
+                .addGap(18, 18, 18)
+                .addComponent(btnTravel)
+                .addGap(18, 18, 18)
+                .addComponent(btnGrade)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,6 +175,31 @@ public class TestOpen extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ConvertStrInt().setVisible(true);
     }//GEN-LAST:event_btnVolumeActionPerformed
+
+    private void btnVolTabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolTabungActionPerformed
+        // TODO add your handling code here:
+        new ConvertStrDouble().setVisible(true);
+    }//GEN-LAST:event_btnVolTabungActionPerformed
+
+    private void btnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekActionPerformed
+        // TODO add your handling code here:
+        new TiketBioskop().setVisible(true);
+    }//GEN-LAST:event_btnCekActionPerformed
+
+    private void btnGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenderActionPerformed
+        // TODO add your handling code here:
+        new Gender().setVisible(true);
+    }//GEN-LAST:event_btnGenderActionPerformed
+
+    private void btnTravelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTravelActionPerformed
+        // TODO add your handling code here:
+        new Travel().setVisible(true);
+    }//GEN-LAST:event_btnTravelActionPerformed
+
+    private void btnGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradeActionPerformed
+        // TODO add your handling code here:
+        new SewaRumah().setVisible(true);
+    }//GEN-LAST:event_btnGradeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,7 +237,12 @@ public class TestOpen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCek;
+    private javax.swing.JButton btnGender;
+    private javax.swing.JButton btnGrade;
     private javax.swing.JButton btnShowMessage;
+    private javax.swing.JButton btnTravel;
+    private javax.swing.JButton btnVolTabung;
     private javax.swing.JButton btnVolume;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables

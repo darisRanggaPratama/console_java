@@ -35,6 +35,8 @@ public class ConvertStrInt extends javax.swing.JFrame {
         txtVolume = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("String to Integer");
+        setName("StringInteger"); // NOI18N
 
         lblTinggi.setText("Tinggi Tabung");
 
