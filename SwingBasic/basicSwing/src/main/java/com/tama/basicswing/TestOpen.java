@@ -34,6 +34,9 @@ public class TestOpen extends javax.swing.JFrame {
         btnGender = new javax.swing.JButton();
         btnTravel = new javax.swing.JButton();
         btnGrade = new javax.swing.JButton();
+        btnDaftar = new javax.swing.JButton();
+        btnTable = new javax.swing.JButton();
+        btnNotebook = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OpenForm");
@@ -118,6 +121,34 @@ public class TestOpen extends javax.swing.JFrame {
             }
         });
 
+        btnDaftar.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnDaftar.setForeground(new java.awt.Color(255, 51, 51));
+        btnDaftar.setText("Daftar Laptop");
+        btnDaftar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarActionPerformed(evt);
+            }
+        });
+
+        btnTable.setBackground(new java.awt.Color(255, 204, 204));
+        btnTable.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnTable.setForeground(new java.awt.Color(255, 51, 51));
+        btnTable.setText("Table Member");
+        btnTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTableActionPerformed(evt);
+            }
+        });
+
+        btnNotebook.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnNotebook.setForeground(new java.awt.Color(255, 51, 51));
+        btnNotebook.setText("Daftar Notebook");
+        btnNotebook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNotebookActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,25 +156,36 @@ public class TestOpen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnTravel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVolTabung, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnVolume, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnShowMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCek, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnGrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(334, Short.MAX_VALUE))
+                    .addComponent(btnVolTabung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTravel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDaftar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNotebook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(188, 188, 188))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnDaftar))
                 .addGap(18, 18, 18)
-                .addComponent(btnShowMessage)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnShowMessage)
+                    .addComponent(btnNotebook))
                 .addGap(18, 18, 18)
-                .addComponent(btnVolume)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolume)
+                    .addComponent(btnTable))
                 .addGap(18, 18, 18)
                 .addComponent(btnVolTabung)
                 .addGap(18, 18, 18)
@@ -201,6 +243,21 @@ public class TestOpen extends javax.swing.JFrame {
         new SewaRumah().setVisible(true);
     }//GEN-LAST:event_btnGradeActionPerformed
 
+    private void btnDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarActionPerformed
+        // TODO add your handling code here:
+        new DaftarLaptop().setVisible(true);
+    }//GEN-LAST:event_btnDaftarActionPerformed
+
+    private void btnTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableActionPerformed
+        // TODO add your handling code here:
+        new Member().setVisible(true);
+    }//GEN-LAST:event_btnTableActionPerformed
+
+    private void btnNotebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotebookActionPerformed
+        // TODO add your handling code here:
+        new DaftarNotebook().setVisible(true);
+    }//GEN-LAST:event_btnNotebookActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,9 +295,12 @@ public class TestOpen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCek;
+    private javax.swing.JButton btnDaftar;
     private javax.swing.JButton btnGender;
     private javax.swing.JButton btnGrade;
+    private javax.swing.JButton btnNotebook;
     private javax.swing.JButton btnShowMessage;
+    private javax.swing.JButton btnTable;
     private javax.swing.JButton btnTravel;
     private javax.swing.JButton btnVolTabung;
     private javax.swing.JButton btnVolume;
