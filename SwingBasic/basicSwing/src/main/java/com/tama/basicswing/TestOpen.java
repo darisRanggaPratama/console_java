@@ -39,6 +39,8 @@ public class TestOpen extends javax.swing.JFrame {
         btnNotebook = new javax.swing.JButton();
         btnVilla = new javax.swing.JButton();
         btnLoop = new javax.swing.JButton();
+        btnPangkat = new javax.swing.JButton();
+        btnTestInput = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OpenForm");
@@ -171,6 +173,25 @@ public class TestOpen extends javax.swing.JFrame {
             }
         });
 
+        btnPangkat.setBackground(new java.awt.Color(255, 204, 204));
+        btnPangkat.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnPangkat.setForeground(new java.awt.Color(255, 51, 51));
+        btnPangkat.setText("Looping Pangkat");
+        btnPangkat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPangkatActionPerformed(evt);
+            }
+        });
+
+        btnTestInput.setFont(new java.awt.Font("JetBrains Mono", 1, 12)); // NOI18N
+        btnTestInput.setForeground(new java.awt.Color(255, 51, 51));
+        btnTestInput.setText("TEST INPUT");
+        btnTestInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestInputActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,8 +213,11 @@ public class TestOpen extends javax.swing.JFrame {
                     .addComponent(btnNotebook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVilla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLoop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(188, 188, 188))
+                    .addComponent(btnLoop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPangkat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnTestInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +225,8 @@ public class TestOpen extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(btnDaftar))
+                    .addComponent(btnDaftar)
+                    .addComponent(btnTestInput))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnShowMessage)
@@ -223,7 +248,9 @@ public class TestOpen extends javax.swing.JFrame {
                     .addComponent(btnGender)
                     .addComponent(btnLoop))
                 .addGap(18, 18, 18)
-                .addComponent(btnTravel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTravel)
+                    .addComponent(btnPangkat))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
@@ -296,6 +323,16 @@ public class TestOpen extends javax.swing.JFrame {
         new LoopAngka().setVisible(true);
     }//GEN-LAST:event_btnLoopActionPerformed
 
+    private void btnPangkatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPangkatActionPerformed
+        // TODO add your handling code here:
+        new LoopPangkat().setVisible(true);
+    }//GEN-LAST:event_btnPangkatActionPerformed
+
+    private void btnTestInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestInputActionPerformed
+        // TODO add your handling code here:
+        new Mahasiswa().setVisible(true);
+    }//GEN-LAST:event_btnTestInputActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -338,8 +375,10 @@ public class TestOpen extends javax.swing.JFrame {
     private javax.swing.JButton btnGrade;
     private javax.swing.JButton btnLoop;
     private javax.swing.JButton btnNotebook;
+    private javax.swing.JButton btnPangkat;
     private javax.swing.JButton btnShowMessage;
     private javax.swing.JButton btnTable;
+    private javax.swing.JButton btnTestInput;
     private javax.swing.JButton btnTravel;
     private javax.swing.JButton btnVilla;
     private javax.swing.JButton btnVolTabung;
