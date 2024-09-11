@@ -4,12 +4,25 @@
  */
 package com.tama.basicswing;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -43,6 +56,10 @@ public class Mahasiswa extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
+        dateSelect = new com.toedter.calendar.JDateChooser();
+        lblDate = new javax.swing.JLabel();
+        btnUploadCSV = new javax.swing.JButton();
+        btnDownloadCSV = new javax.swing.JButton();
 
         jTextField3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -92,6 +109,25 @@ public class Mahasiswa extends javax.swing.JFrame {
             }
         });
 
+        lblDate.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblDate.setText("DATE");
+
+        btnUploadCSV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnUploadCSV.setText("UPLOAD CSV");
+        btnUploadCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUploadCSVActionPerformed(evt);
+            }
+        });
+
+        btnDownloadCSV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDownloadCSV.setText("DOWNLOAD CSV");
+        btnDownloadCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownloadCSVActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,7 +139,7 @@ public class Mahasiswa extends javax.swing.JFrame {
                         .addComponent(btnSave)
                         .addGap(18, 18, 18)
                         .addComponent(btnEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addComponent(btnDelete))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,13 +148,19 @@ public class Mahasiswa extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblName)
                                     .addComponent(lblID)))
-                            .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDate))
                         .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                            .addComponent(dateSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDownloadCSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUploadCSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,21 +168,27 @@ public class Mahasiswa extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUploadCSV))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDownloadCSV))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dateSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDate))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnEdit)
                     .addComponent(btnDelete))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,6 +211,7 @@ public class Mahasiswa extends javax.swing.JFrame {
                 if (result.next()) {
                     txtName.setText(result.getString("name"));
                     txtEmail.setText(result.getString("email"));
+                    dateSelect.setDate(result.getDate("birth"));
                 } else {
                     JOptionPane.showMessageDialog(this, "No Data", "Message", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -173,26 +222,52 @@ public class Mahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIDKeyPressed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String url, user, password;
+        String url, user, password, formatDate, dateText;
         url = "jdbc:mysql://localhost/java_database";
         user = "rangga";
         password = "rangga";
+
+        formatDate = "yyyy-MM-dd";
+        SimpleDateFormat fm = new SimpleDateFormat(formatDate);
+        dateText = String.valueOf(fm.format(dateSelect.getDate()));
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
             Statement state = conn.createStatement();
 
-            String sql = "INSERT INTO customer(id, name, email) VALUES " + "('" + txtID.getText() + "',  '" + txtName.getText() + "', '" + txtEmail.getText() + "')";
+            String sql = "INSERT INTO customer(id, name, email, birth) VALUES " + "('" + txtID.getText() + "',  '" + txtName.getText() + "', '" + txtEmail.getText() + "', '" + dateText + "')";
             state.executeUpdate(sql);
-            txtID.setText("");
-            txtName.setText("");
-            txtEmail.setText("");
+            clearText();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        String url, user, password, formatDate, dateText;
+        url = "jdbc:mysql://localhost/java_database";
+        user = "rangga";
+        password = "rangga";
+
+        formatDate = "yyyy-MM-dd";
+        SimpleDateFormat fm = new SimpleDateFormat(formatDate);
+        dateText = String.valueOf(fm.format(dateSelect.getDate()));
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement state = conn.createStatement();
+
+            String sql = "UPDATE customer SET name = '" + txtName.getText() + "', email = '" + txtEmail.getText() + "', birth = '" + dateText + "' WHERE id = '" + txtID.getText() + "'";
+            state.executeUpdate(sql);
+            clearText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String url, user, password;
         url = "jdbc:mysql://localhost/java_database";
         user = "rangga";
@@ -202,35 +277,133 @@ public class Mahasiswa extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection(url, user, password);
             Statement state = conn.createStatement();
 
-            String sql = "UPDATE customer SET name = '"+ txtName.getText() +"', email = '"+ txtEmail.getText() +"' WHERE id = '"+ txtID.getText() +"'";
+            String sql = "DELETE FROM customer WHERE id = '" + txtID.getText() + "'";
             state.executeUpdate(sql);
-            txtID.setText("");
-            txtName.setText("");
-            txtEmail.setText("");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnEditActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-      String url, user, password;
-        url = "jdbc:mysql://localhost/java_database";
-        user = "rangga";
-        password = "rangga";
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url, user, password);
-            Statement state = conn.createStatement();
-
-            String sql = "DELETE FROM customer WHERE id = '"+ txtID.getText() +"'";
-            state.executeUpdate(sql);
-            txtID.setText("");
-            txtName.setText("");
-            txtEmail.setText("");
+            clearText();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnUploadCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadCSVActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("Data"));
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            try {
+                processCSV(selectedFile);
+                JOptionPane.showMessageDialog(this, "Data berhasil di-upload!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnUploadCSVActionPerformed
+
+    private void btnDownloadCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadCSVActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("Download"));
+        fileChooser.setSelectedFile(new File("customer_data.csv"));
+        int result = fileChooser.showSaveDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            try {
+                exportToCSV(selectedFile);
+                JOptionPane.showMessageDialog(this, "Data berhasil di-download!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnDownloadCSVActionPerformed
+
+    private void exportToCSV(File file) throws IOException, SQLException {
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setUser("rangga");
+        dataSource.setPassword("rangga");
+        dataSource.setServerName("localhost");
+        dataSource.setDatabaseName("java_database");
+
+        try (Connection conn = dataSource.getConnection(); BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+
+            String sql = "SELECT id, name, email, birth FROM Customer";
+            try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+
+                // Write header
+                bw.write("id;name;email;birth");
+                bw.newLine();
+
+                // Write data
+                while (rs.next()) {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(rs.getString("id")).append(";");
+                    sb.append(rs.getString("name")).append(";");
+                    sb.append(rs.getString("email")).append(";");
+                    sb.append(formatDate(rs.getDate("birth")));
+                    bw.write(sb.toString());
+                    bw.newLine();
+                }
+            }
+        }
+    }
+
+    private String formatDate(Date date) {
+        if (date == null) {
+            return "";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(date);
+    }
+
+    private void processCSV(File file) throws IOException, SQLException, ParseException {
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setUser("rangga");
+        dataSource.setPassword("rangga");
+        dataSource.setServerName("localhost");
+        dataSource.setDatabaseName("java_database");
+
+        try (Connection conn = dataSource.getConnection(); BufferedReader br = new BufferedReader(new FileReader(file))) {
+
+            String line;
+            boolean isFirstLine = true;
+
+            while ((line = br.readLine()) != null) {
+                if (isFirstLine) {
+                    isFirstLine = false;
+                    continue;
+                }
+
+                String[] data = line.split(";");
+                if (data.length != 4) {
+                    throw new IOException("Invalid CSV format");
+                }
+
+                String sql = "INSERT INTO Customer (id, name, email, birth) VALUES (?, ?, ?, ?)";
+                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setString(1, data[0].trim());
+                    pstmt.setString(2, data[1].trim());
+                    pstmt.setString(3, data[2].trim());
+                    pstmt.setDate(4, convertToSqlDate(data[3].trim()));
+                    pstmt.executeUpdate();
+                }
+            }
+        }
+    }
+
+    private java.sql.Date convertToSqlDate(String dateString) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date parsed = format.parse(dateString);
+        return new java.sql.Date(parsed.getTime());
+    }
+
+    private void clearText() {
+        txtID.setText("");
+        txtName.setText("");
+        txtEmail.setText("");
+        dateSelect.setDate(null);
+        txtID.requestFocus();
+    }
 
     /**
      * @param args the command line arguments
@@ -261,6 +434,7 @@ public class Mahasiswa extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Mahasiswa().setVisible(true);
             }
@@ -269,9 +443,13 @@ public class Mahasiswa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDownloadCSV;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUploadCSV;
+    private com.toedter.calendar.JDateChooser dateSelect;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblName;
