@@ -58,8 +58,7 @@ public class Mahasiswa extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         dateSelect = new com.toedter.calendar.JDateChooser();
         lblDate = new javax.swing.JLabel();
-        btnUploadCSV = new javax.swing.JButton();
-        btnDownloadCSV = new javax.swing.JButton();
+        btnUploadDownload = new javax.swing.JButton();
 
         jTextField3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -112,19 +111,11 @@ public class Mahasiswa extends javax.swing.JFrame {
         lblDate.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblDate.setText("DATE");
 
-        btnUploadCSV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnUploadCSV.setText("UPLOAD CSV");
-        btnUploadCSV.addActionListener(new java.awt.event.ActionListener() {
+        btnUploadDownload.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnUploadDownload.setText("UPLOAD/ DOWNLOAD");
+        btnUploadDownload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUploadCSVActionPerformed(evt);
-            }
-        });
-
-        btnDownloadCSV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDownloadCSV.setText("DOWNLOAD CSV");
-        btnDownloadCSV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDownloadCSVActionPerformed(evt);
+                btnUploadDownloadActionPerformed(evt);
             }
         });
 
@@ -135,12 +126,6 @@ public class Mahasiswa extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSave)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(btnDelete))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -155,26 +140,29 @@ public class Mahasiswa extends javax.swing.JFrame {
                             .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                             .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                            .addComponent(dateSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDownloadCSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnUploadCSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                            .addComponent(dateSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSave)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnUploadDownload, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEdit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDelete)))))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUploadCSV))
-                .addGap(18, 18, 18)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDownloadCSV))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
@@ -188,7 +176,9 @@ public class Mahasiswa extends javax.swing.JFrame {
                     .addComponent(btnSave)
                     .addComponent(btnEdit)
                     .addComponent(btnDelete))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnUploadDownload, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -285,118 +275,10 @@ public class Mahasiswa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnUploadCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadCSVActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File("Data"));
-        int result = fileChooser.showOpenDialog(this);
-
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            try {
-                processCSV(selectedFile);
-                JOptionPane.showMessageDialog(this, "Data berhasil di-upload!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_btnUploadCSVActionPerformed
-
-    private void btnDownloadCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadCSVActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File("Download"));
-        fileChooser.setSelectedFile(new File("customer_data.csv"));
-        int result = fileChooser.showSaveDialog(this);
-
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            try {
-                exportToCSV(selectedFile);
-                JOptionPane.showMessageDialog(this, "Data berhasil di-download!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_btnDownloadCSVActionPerformed
-
-    private void exportToCSV(File file) throws IOException, SQLException {
-        MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUser("rangga");
-        dataSource.setPassword("rangga");
-        dataSource.setServerName("localhost");
-        dataSource.setDatabaseName("java_database");
-
-        try (Connection conn = dataSource.getConnection(); BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-
-            String sql = "SELECT id, name, email, birth FROM Customer";
-            try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
-
-                // Write header
-                bw.write("id;name;email;birth");
-                bw.newLine();
-
-                // Write data
-                while (rs.next()) {
-                    StringBuilder sb = new StringBuilder();
-                    sb.append(rs.getString("id")).append(";");
-                    sb.append(rs.getString("name")).append(";");
-                    sb.append(rs.getString("email")).append(";");
-                    sb.append(formatDate(rs.getDate("birth")));
-                    bw.write(sb.toString());
-                    bw.newLine();
-                }
-            }
-        }
-    }
-
-    private String formatDate(Date date) {
-        if (date == null) {
-            return "";
-        }
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.format(date);
-    }
-
-    private void processCSV(File file) throws IOException, SQLException, ParseException {
-        MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUser("rangga");
-        dataSource.setPassword("rangga");
-        dataSource.setServerName("localhost");
-        dataSource.setDatabaseName("java_database");
-
-        try (Connection conn = dataSource.getConnection(); BufferedReader br = new BufferedReader(new FileReader(file))) {
-
-            String line;
-            boolean isFirstLine = true;
-
-            while ((line = br.readLine()) != null) {
-                if (isFirstLine) {
-                    isFirstLine = false;
-                    continue;
-                }
-
-                String[] data = line.split(";");
-                if (data.length != 4) {
-                    throw new IOException("Invalid CSV format");
-                }
-
-                String sql = "INSERT INTO Customer (id, name, email, birth) VALUES (?, ?, ?, ?)";
-                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                    pstmt.setString(1, data[0].trim());
-                    pstmt.setString(2, data[1].trim());
-                    pstmt.setString(3, data[2].trim());
-                    pstmt.setDate(4, convertToSqlDate(data[3].trim()));
-                    pstmt.executeUpdate();
-                }
-            }
-        }
-    }
-
-    private java.sql.Date convertToSqlDate(String dateString) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date parsed = format.parse(dateString);
-        return new java.sql.Date(parsed.getTime());
-    }
-
+    private void btnUploadDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadDownloadActionPerformed
+        new UploadDownload().setVisible(true);
+    }//GEN-LAST:event_btnUploadDownloadActionPerformed
+ 
     private void clearText() {
         txtID.setText("");
         txtName.setText("");
@@ -443,10 +325,9 @@ public class Mahasiswa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnDownloadCSV;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnUploadCSV;
+    private javax.swing.JButton btnUploadDownload;
     private com.toedter.calendar.JDateChooser dateSelect;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblDate;
