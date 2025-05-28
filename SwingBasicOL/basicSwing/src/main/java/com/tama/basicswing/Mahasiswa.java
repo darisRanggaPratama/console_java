@@ -4,7 +4,6 @@
  */
 package com.tama.basicswing;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -188,11 +187,11 @@ public class Mahasiswa extends javax.swing.JFrame {
     private void txtIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String url, user, password;
-            url = "jdbc:mysql://localhost/java_database";
-        user = "rangga";
-        password = "rangga";
+            url = "jdbc:mysql://sql12.freesqldatabase.com:3306/sql12731281";
+            user = "sql12731281";
+            password = "Tq16HB6X9P";
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection(url, user, password);
                 Statement state = conn.createStatement();
 
